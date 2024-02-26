@@ -31,7 +31,7 @@ const CreateBooks = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4 flex flex-col justify-center items-center">
       <BackButton />
       <h1 className="text-3xl my-4">Create Book</h1>
       {loading ? <Spinner /> : ""}
@@ -63,7 +63,7 @@ const CreateBooks = () => {
             className="border-2 border-gray-500 px-4 py-2  w-full "
           />
         </div>
-        <button className="p-2 bg-sky-300 m-8" onClick={handleSaveBook}>
+        <button className="p-2 bg-sky-300 m-8 rounded-full" onClick={handleSaveBook}>
           Save
         </button>
       </div>

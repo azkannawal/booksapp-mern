@@ -34,7 +34,7 @@ const Home = () => {
 
   return (
     <div className="p-4">
-      <div className="flex justify-center gap-4px">
+      <div className="flex justify-center gap-4">
         <button
           className="bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg"
           onClick={() => setShowType("table")}
@@ -48,7 +48,7 @@ const Home = () => {
           Card
         </button>
       </div>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center px-2">
         <h1 className="text-2xl font-bold">Books</h1>
         <Link to="/books/create">
           <MdOutlineAddBox className="text-4xl" />
