@@ -1,10 +1,10 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { MdOutlineAddBox } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import BooksTable from "../components/fragments/BooksTable";
 import BooksCard from "../components/fragments/BooksCard";
+import { axiosInstance } from "../lib/axios";
 
 interface Book {
   _id: string;
@@ -20,8 +20,8 @@ const Home = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get("http://localhost:5000/books")
+    axiosInstance
+      .get("/books")
       .then((response) => {
         setBooks(response.data.data);
         setLoading(false);

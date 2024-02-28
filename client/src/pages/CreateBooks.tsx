@@ -1,8 +1,8 @@
 import { useState } from "react";
 import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { axiosInstance } from "../lib/axios";
 
 const CreateBooks = () => {
   const [title, setTitle] = useState("");
@@ -18,8 +18,8 @@ const CreateBooks = () => {
       publishYear,
     };
     setLoading(true);
-    axios
-      .post("http://localhost:5000/books", data)
+    axiosInstance
+      .post("/books", data)
       .then(() => {
         setLoading(false);
         navigate("/");

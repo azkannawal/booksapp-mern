@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
-import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { axiosInstance } from "../lib/axios";
 
 const EditBook = () => {
   const [title, setTitle] = useState("");
@@ -14,8 +14,8 @@ const EditBook = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get(`http://localhost:5000/books/${id}`)
+    axiosInstance
+      .get(`/books/${id}`)
       .then((response) => {
         setAuthor(response.data.author);
         setPublishYear(response.data.publishYear);
@@ -24,7 +24,6 @@ const EditBook = () => {
       })
       .catch((error) => {
         setLoading(false);
-        alert("An error happened. Please Chack console");
         console.log(error);
       });
   }, []);
@@ -36,15 +35,14 @@ const EditBook = () => {
       publishYear,
     };
     setLoading(true);
-    axios
-      .put(`http://localhost:5000/books/${id}`, data)
+    axiosInstance
+      .put(`/books/${id}`, data)
       .then(() => {
         setLoading(false);
         navigate("/");
       })
       .catch((error) => {
         setLoading(false);
-        // alert('An error happened. Please Chack console');
         console.log(error);
       });
   };
